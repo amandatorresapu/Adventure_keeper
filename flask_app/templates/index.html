@@ -1,2 +1,63 @@
-<h1>index</h1>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css') }}"
+    />
+
+    <title>Adventure keeper</title>
+  </head>
+  <body>
+    <div class="nav">
+      <h1 class="nav-title">Adventure keeper</h1>
+      <button class="btn-login"><a href="/login_page">Login</a></button>
+      <button class="btn-login"><a href="/login_page">Register</a></button>
+    </div>
+    <div class="main d-flex">
+      <div class="left col-1">
+        <div class="info">
+          <!-- <h1>search for your favorite pokemon</h1>
+          <form onsubmit="event.preventDefault(); getPokemon();" action="">
+            <input oninput="setName(this)" type="text" name="" id="" />
+            <button></button>
+          </form> -->
+
+          <h2 class="d-flex">Adventure keeper</h2>
+        </div>
+        <div class="cover-letter test">
+          <ul>
+            <li>Pictures</li>
+            <li>Contact Me</li>
+          </ul>
+        </div>
+        <div class="social test">
+          <ul>
+            <li>Instagram</li>
+            <li>Twitter</li>
+          </ul>
+        </div>
+      </div>
+      <div class="right test col-2">
+        <div class="introduction test">
+          <h1>Welcome friend</h1>
+          <br />
+          <h2>
+            Adventure keeper is a safe inclusive place for adventures to let
+            someone know where they are going by email notification. Let them
+            know as much or as little as you want!
+          </h2>
+        </div>
+        <div class="image-buttons test">
+          <h2 class="floats">
+            <a href="http://">Testimonials</a>
+          </h2>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
 <a href="/login_page">Login</a>

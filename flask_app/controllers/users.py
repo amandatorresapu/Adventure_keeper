@@ -2,10 +2,11 @@ from flask import Flask, render_template, redirect, request, flash, session
 from flask_app import app
 from flask_app.models.user import User
 from flask_app.models.adventure import Adventure
-# add session if user id in session from other project below under index!
+
 @app.route("/")
 def index():
-
+    if "user_id" in session:
+        return redirect("/dashboard")
     return render_template("index.html")
 
 @app.route("/login_page")

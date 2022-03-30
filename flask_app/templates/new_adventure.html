@@ -1,1 +1,28 @@
 <h1>New adventure</h1>
+
+{% with messages = get_flashed_messages() %} {% if messages %} {% for message in
+messages %}
+<p>{{message}}</p>
+{% endfor %} {% endif %} {% endwith %}
+
+<form action="/adventure/create" method="post">
+  <input type="hidden" name="user_id" value="{{session['user_id']}}" />
+  <label for="date">Date:</label>
+  <input type="text" name="date" />
+  <label for="location">Location</label>
+  <input type="text" name="location" />
+  <label for="returntime">Time Return:</label>
+  <input type="text" name="returntime" />
+  <label for="emailkeeper">Email Keeper</label>
+  <input type="text" name="emailkeeper" />
+
+  <input type="submit" value="Add New Adventure" />
+</form>
+
+<br />
+<a href="/dashboard">dashboard</a>
+<br />
+<br />
+<a href="/clear_session">log off</a>
+
+<p>User ID: {{session['user_id']}}</p>

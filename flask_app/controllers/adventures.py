@@ -5,7 +5,6 @@ from flask_app.models.user import User
 #add session below function
 @app.route("/dashboard")
 def all_adventures_list():
-   
     user=User.get_one({"id": session["user_id"]})
     
     return render_template("dashboard.html", user=user)
@@ -15,10 +14,12 @@ def new_car():
     return render_template('new_adventure.html')
 
 
-@app.route("/dashboard")
-def all_adventures():
-    if "user_id" not in session:
-        return redirect("/")
-    user=User.get_one({"id": session["user_id"]})
-    all_adventures = Adventure.advent_get_all()
-    return render_template("dashboard.html", all_adventures = all_adventures, user=user)
+
+
+@app.route('/adventure/create', methods = ["POST"])
+def create():
+    if not Adventure.adventure_validator(request.form):
+        return redirect("/new_adventure")
+    Adventure.create(request.form)
+    
+    return redirect('/new_adventure')

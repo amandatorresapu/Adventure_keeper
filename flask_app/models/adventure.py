@@ -17,25 +17,32 @@ class Adventure:
         self.updated_at = data["updated_at"]
 
 
-    
     @classmethod 
-    def advent_get_all(cls):
+    def create(cls,data):
         mysql = connectToMySQL("adventure_keeper_db")
-        query = "SELECT * FROM adventures JOIN users on adventures.user_id = users.id;"
-        results = mysql.query_db(query)
-        if results:
-            adventures = []
-            for row in results:
-                temp_adventure = cls(row)
-                data = {
-                    "id": row["users.id"],
-                    "first_name" : row["first_name"],
-                    "last_name" : row["last_name"],
-                    "email" : row["email"],
-                    "password" : row["password"],
-                    "created_at": row["users.created_at"],
-                    "updated_at": row["users.updated_at"]
-                    }
-                temp_adventure.user = user.User(data)
-                adventures.append(temp_adventure)
-            return adventures    
+        query = "INSERT INTO adventures (user_id, date, location, returntime, emailkeeper) Values (%(user_id)s, %(date)s, %(location)s, %(returntime)s, %(emailkeeper)s);"
+        
+        user_id = mysql.query_db(query, data)
+
+        return user_id
+
+    @staticmethod
+    def adventure_validator(data):
+        is_valid = True
+
+        if len(data["date"]) <= 1:
+            flash("Date must be more than 1")
+            is_valid = False
+
+        if len(data["location"]) <= 4:
+            flash("Location must be more than 4 charaters in length")
+            is_valid = False
+
+        if len(data["returntime"]) <= 3:
+            flash("Time Return be more than 3 charaters in length")
+            is_valid = False
+
+        if len(data["emailkeeper"]) <= 1:
+            flash("Email must be more than 1")
+            is_valid = False
+        return is_valid

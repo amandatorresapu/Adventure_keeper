@@ -38,7 +38,7 @@ class User:
     @classmethod
     def get_one(cls,data):
         query = "SELECT * FROM users WHERE id = %(id)s;"
-        results = connectToMySQL("red_belt_db").query_db(query, data)
+        results = connectToMySQL("adventure_keeper_db").query_db(query, data)
         if results: 
             return cls(results[0])
 
