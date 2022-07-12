@@ -27,18 +27,18 @@ class User:
             "password": hash_yellow
         }
         query = "INSERT INTO users (first_name, last_name, email, password) VALUES (%(first_name)s, %(last_name)s, %(email)s, %(password)s);"
-        return connectToMySQL("adventure_keeper_db").query_db(query,hashed_dict)
+        return connectToMySQL("adventures_schema").query_db(query,hashed_dict)
 
     @classmethod
     def get_by_email(cls, data):
         query = "SELECT * FROM users WHERE email = %(email)s;"
-        result = connectToMySQL("adventure_keeper_db").query_db(query, data)
+        result = connectToMySQL("adventures_schema").query_db(query, data)
         if result: 
             return cls(result[0])
     @classmethod
     def get_one(cls,data):
         query = "SELECT * FROM users WHERE id = %(id)s;"
-        results = connectToMySQL("adventure_keeper_db").query_db(query, data)
+        results = connectToMySQL("adventures_schema").query_db(query, data)
         if results: 
             return cls(results[0])
 

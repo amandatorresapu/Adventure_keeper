@@ -19,7 +19,7 @@ class Adventure:
 
     @classmethod 
     def create(cls,data):
-        mysql = connectToMySQL("adventure_keeper_db")
+        mysql = connectToMySQL("adventures_schema")
         query = "INSERT INTO adventures (user_id, date, location, returntime, emailkeeper) Values (%(user_id)s, %(date)s, %(location)s, %(returntime)s, %(emailkeeper)s);"
         
         user_id = mysql.query_db(query, data)
